@@ -1,6 +1,7 @@
 import os
 from dotenv import load_dotenv
 
+
 load_dotenv()
 
 BOT_TOKEN="6418387707:AAGZqtHqwiQolOb8_3s-UpKlln6u9I5TimQ"

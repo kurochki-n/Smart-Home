@@ -15,7 +15,7 @@ router = Router()
 
 
 @router.message(Command('start'))
-async def start_handler(message: Message):
+async def start_handler(message: Message) -> None:
     if message.from_user.id != USER_ID:
         logging.warning(f'User {message.from_user.id} was not found in the whitelist!')
         return
@@ -23,7 +23,7 @@ async def start_handler(message: Message):
     
     
 @router.message(Command('open'))
-async def start_handler(message: Message):
+async def start_handler(message: Message) -> None:
     if message.from_user.id != USER_ID:
         logging.warning(f'User {message.from_user.id} was not found in the whitelist!')
         return
@@ -33,7 +33,7 @@ async def start_handler(message: Message):
 
 
 @router.message(Command('snap'))
-async def start_handler(message: Message):
+async def start_handler(message: Message) -> None:
     if message.from_user.id != USER_ID:
         logging.warning(f'User {message.from_user.id} was not found in the whitelist!')
         return
@@ -43,7 +43,7 @@ async def start_handler(message: Message):
     
     
 @router.message(Command('start_tracking'))
-async def start_handler(message: Message):
+async def start_handler(message: Message) -> None:
     if message.from_user.id != USER_ID:
         logging.warning(f'User {message.from_user.id} was not found in the whitelist!')
         return
@@ -52,7 +52,7 @@ async def start_handler(message: Message):
     
     
 @router.message(Command('stop_tracking'))
-async def start_handler(message: Message):
+async def start_handler(message: Message) -> None:
     if message.from_user.id != USER_ID:
         logging.warning(f'User {message.from_user.id} was not found in the whitelist!')
         return
@@ -61,7 +61,7 @@ async def start_handler(message: Message):
 
 
 @router.message(Command('set_reboot'))
-async def message_handler(message: Message):
+async def message_handler(message: Message) -> None:
     """
     rebooting the bot on the linux server
     """
