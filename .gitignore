@@ -160,6 +160,8 @@ cython_debug/
 #.idea/
 
 .env
-src/my_photos
+data/my_photos
 test.py
 *.whl
+logs/logs.log
+urls.txt
