@@ -1,5 +1,5 @@
 import os
-import asyncio
+import fuckit
 
 from contextlib import suppress
 from aiohttp import ClientSession
@@ -58,7 +58,7 @@ class FaceTracking(MyHome):
         )
         self.scheduler.start()
         
-        
+    
+    @fuckit
     async def stop(self) -> None:
-        with suppress(asyncio.exceptions.CancelledError):
-            self.scheduler.shutdown()
+        self.scheduler.shutdown()
