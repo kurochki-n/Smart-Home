@@ -1,5 +1,7 @@
 import os
+import asyncio
 
+from contextlib import suppress
 from aiohttp import ClientSession
 from aiogram.types import Message, FSInputFile
 from apscheduler.schedulers.asyncio import AsyncIOScheduler
@@ -46,18 +48,17 @@ class FaceTracking(MyHome):
     
     
     async def start(self) -> None:
-        try:
-            if self.scheduler.state == 1:
-                await self.stop()
-        finally:
-            self.scheduler.add_job(
-                name="Tracking",
-                func=self.tracking,
-                trigger="interval",
-                seconds=1
-            )
-            self.scheduler.start()
+        if self.scheduler.state == 1:
+            await self.stop()
+        self.scheduler.add_job(
+            name="Tracking",
+            func=self.tracking,
+            trigger="interval",
+            seconds=1
+        )
+        self.scheduler.start()
         
         
     async def stop(self) -> None:
-        self.scheduler.shutdown()
+        with suppress(asyncio.exceptions.CancelledError):
+            self.scheduler.shutdown()
