@@ -1,5 +1,4 @@
 import os
-import fuckit
 
 from contextlib import suppress
 from aiohttp import ClientSession
@@ -48,8 +47,6 @@ class FaceTracking(MyHome):
     
     
     async def start(self) -> None:
-        if len(self.scheduler.get_jobs()) != 0:
-            await self.stop()
         self.scheduler.add_job(
             name="Tracking",
             func=self.tracking,
@@ -59,6 +56,5 @@ class FaceTracking(MyHome):
         self.scheduler.start()
         
     
-    @fuckit
     async def stop(self) -> None:
         self.scheduler.shutdown()
