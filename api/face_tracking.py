@@ -46,7 +46,8 @@ class FaceTracking(MyHome):
     
     
     async def start(self) -> None:
-        self.scheduler.shutdown()
+        if self.scheduler.state == 1:
+            await self.stop()
         self.scheduler.add_job(
             name="Tracking",
             func=self.tracking,
