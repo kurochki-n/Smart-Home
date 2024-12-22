@@ -46,15 +46,17 @@ class FaceTracking(MyHome):
     
     
     async def start(self) -> None:
-        if self.scheduler.state == 1:
-            await self.stop()
-        self.scheduler.add_job(
-            name="Tracking",
-            func=self.tracking,
-            trigger="interval",
-            seconds=1
-        )
-        self.scheduler.start()
+        try:
+            if self.scheduler.state == 1:
+                await self.stop()
+        finally:
+            self.scheduler.add_job(
+                name="Tracking",
+                func=self.tracking,
+                trigger="interval",
+                seconds=1
+            )
+            self.scheduler.start()
         
         
     async def stop(self) -> None:
