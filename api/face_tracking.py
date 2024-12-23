@@ -1,6 +1,5 @@
 import os
 
-from contextlib import suppress
 from aiohttp import ClientSession
 from aiogram.types import Message, FSInputFile
 from apscheduler.schedulers.asyncio import AsyncIOScheduler
