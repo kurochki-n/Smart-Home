@@ -9,7 +9,7 @@ from typing import List, Tuple
 def recognize_face(
     image_path: str, 
     known_face_encodings: List[List[float]], 
-    tolerance: float = 0.2
+    tolerance: float = 0.3
 ) -> Tuple[bool, str]:
     unknown_image = face_recognition.load_image_file(image_path)
     rgb_image = cv2.cvtColor(unknown_image, cv2.COLOR_BGR2RGB)
